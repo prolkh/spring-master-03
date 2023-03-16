@@ -2,7 +2,7 @@
 <%@ page import="spring.springmaster03.domain.member.Member" %>
 <%@ page import="spring.springmaster03.domain.member.MemberRepository" %>
 <%
-    //request, response is usable
+    //The request and response are usable
     MemberRepository memberRepository = MemberRepository.getInstance();
 
     System.out.println("MemberSaveServlet.service");
