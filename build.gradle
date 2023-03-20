@@ -23,7 +23,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//JSP add start
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp:3.0.1'
+	implementation 'org.eclipse.jetty:apache-jstl:11.0.0'
 	//JSP add end
 
 	compileOnly 'org.projectlombok:lombok'
