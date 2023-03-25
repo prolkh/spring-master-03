@@ -10,7 +10,11 @@ import spring.springmaster03.web.frontcontroller.MyView;
 import spring.springmaster03.web.frontcontroller.v3.controller.MemberFormControllerV3;
 import spring.springmaster03.web.frontcontroller.v3.controller.MemberListControllerV3;
 import spring.springmaster03.web.frontcontroller.v3.controller.MemberSaveControllerV3;
+import spring.springmaster03.web.frontcontroller.v4.controller.MemberFormControllerV4;
+import spring.springmaster03.web.frontcontroller.v4.controller.MemberListControllerV4;
+import spring.springmaster03.web.frontcontroller.v4.controller.MemberSaveControllerV4;
 import spring.springmaster03.web.frontcontroller.v5.adaptor.ControllerV3HandlerAdapter;
+import spring.springmaster03.web.frontcontroller.v5.adaptor.ControllerV4HandlerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,23 +37,29 @@ public class FrontControllerServletV5 extends HttpServlet {
         handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
+
+        // add V4
+        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
     }
 
     private void initHandlerAdapters() {
         handlerAdapters.add(new ControllerV3HandlerAdapter());
+        handlerAdapters.add(new ControllerV4HandlerAdapter());
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // MemberFormControllerV3
+        // handlerMappingMap object
         Object handler = getHandler(request);
         if (handler == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        // ControllerV3HandlerAdapter
+        // handlerAdaptor
         MyHandlerAdaptor adapter = getHandlerAdapter(handler);
 
         ModelView mv = adapter.handle(request, response, handler);
