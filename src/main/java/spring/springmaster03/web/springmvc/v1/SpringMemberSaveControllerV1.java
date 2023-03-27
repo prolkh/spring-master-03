@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import spring.springmaster03.domain.member.Member;
 import spring.springmaster03.domain.member.MemberRepository;
-import spring.springmaster03.web.frontcontroller.ModelView;
-
-import java.util.Map;
 
 @Controller
 public class SpringMemberSaveControllerV1 {
